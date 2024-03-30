@@ -6,7 +6,8 @@ interface Store {
     order: OrderItem[]
     addToOrder: (product: Product) => void,
     increaseQuantity: (id: Product['id']) => void,
-    decreseQuantity: (id: Product['id']) => void
+    decreseQuantity: (id: Product['id']) => void,
+    removeItem: (id: Product['id']) => void
 
 }
 
@@ -37,22 +38,25 @@ export const useStore = create<Store>((set, get) => ({
             order: state.order.map(item => item.id === id ? {
                 ...item,
                 quantity: item.quantity + 1,
-                subtotal: (item.quantity + 1) * item.subtotal
+                subtotal: (item.quantity + 1) * item.price
             } : item)
         }))
     },
     decreseQuantity: (id) => {
-        const order = get().order.map(item=>item.id === id ? {
+        const order = get().order.map(item => item.id === id ? {
             ...item,
-            quantity:item.quantity-1
-        }:item)
+            quantity: item.quantity - 1,
+            subtotal: (item.quantity - 1) * item.price
+
+        } : item)
         set((state) => ({
-            order: state.order.map(item => item.id === id ? {
-                ...item,
-                quantity: item.quantity + 1,
-                subtotal: (item.quantity + 1) * item.subtotal
-            } : item)
+            order
         }))
     },
+    removeItem: (id) => {
+        set((state) => ({
+            order: state.order.filter(item => item.id !== id)
+        }))
+    }
 
 }))
