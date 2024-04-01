@@ -1,11 +1,9 @@
 import React from 'react'
 
-export default function ProductPage() {
+export default function page() {
   return (
     <div>
-      ProductPage
+      
     </div>
   )
 }
-
-
