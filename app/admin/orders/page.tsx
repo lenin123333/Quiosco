@@ -22,7 +22,7 @@ async function getPendingOrders(){
 export default async function page() {
 
   const orders= await getPendingOrders()
-  console.log(orders)
+  
   return (
     <>
       <Heading>Administra Ordenes</Heading>
