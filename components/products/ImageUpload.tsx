@@ -3,7 +3,17 @@ import { CldUploadWidget } from 'next-cloudinary'
 import { TbPhotoPlus } from 'react-icons/tb'
 export default function ImageUpload() {
     return (
-        <CldUploadWidget>
+        <CldUploadWidget
+            uploadPreset='ml_default'
+            options={{
+                maxFiles:1,
+
+            }}
+
+            onSuccess={(result,{widget})=>{
+                console.log(result)
+            }}
+        >
             {({open}) => (
                 <>
                     <div className=' space-y-2'>
