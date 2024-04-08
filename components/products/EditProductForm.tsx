@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import React from 'react'
 import { toast } from 'react-toastify'
 
-export default function AddProductForm({ children }: { children: React.ReactNode }) {
+export default function EditProductForm({ children }: { children: React.ReactNode }) {
   const router= useRouter()
   const handleSubmit = async (formData: FormData) => {
     const data = {
@@ -39,6 +39,7 @@ export default function AddProductForm({ children }: { children: React.ReactNode
         {children}
         <input
           type="submit"
+          value={'Guardar Cambios'}
           className=' bg-indigo-600 hover:bg-indigo-800 text-white w-full p-3 uppercase font-bold cursor-pointer m-3'
         />
       </form>
