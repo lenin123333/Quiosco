@@ -19,7 +19,7 @@ export default  function page() {
       revalidateOnFocus:false
   })
 
-  if(isLoading) return 'Cargando....'
+  if(isLoading) return <p>Cargando....</p>
 
   if(data) return (
     <>
